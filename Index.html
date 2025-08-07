@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>dilema del prisionero</title>
+</head>
+<body>
+    <script>
+document.addEventListener("DOMContentLoaded", function() {
+
+//elementos del DOM
+const divp = document.createElement('div');
+const h1 = document.createElement('h1');
+const div1 = document.createElement('div');
+const enunciadop1 = document.createElement('p');
+const p1verdadero = document.createElement('input');
+const label1 = document.createElement('label');
+const br1 = document.createElement('br');
+const p1falso = document.createElement('input');
+const label2 = document.createElement('label');
+const br2 = document.createElement('br');
+const div2 = document.createElement('div');
+const enunciadop2 = document.createElement('p');
+const p2verdadero = document.createElement('input');
+const label3 = document.createElement('label');
+const br3 = document.createElement('br');
+const p2falso = document.createElement('input');
+const label4 = document.createElement('label');
+const br4 = document.createElement('br');
+const condena = document.createElement('div');
+
+//ordenando elementos del DOM
+document.body.appendChild(divp);
+divp.appendChild(h1);
+divp.appendChild(div1);
+div1.appendChild(enunciadop1);
+div1.appendChild(p1verdadero);
+div1.appendChild(label1);
+div1.appendChild(br1);
+div1.appendChild(p1falso);
+div1.appendChild(label2);
+div1.appendChild(br2);
+divp.appendChild(div2);
+div2.appendChild(enunciadop2);
+div2.appendChild(p2verdadero);
+div2.appendChild(label3);
+div2.appendChild(br3);
+div2.appendChild(p2falso);
+div2.appendChild(label4);
+div2.appendChild(br4);
+divp.appendChild(condena);
+
+//agregando atributos y valores en el DOM
+h1.textContent = 'Dilema del prisionero';
+
+enunciadop1.textContent = 'prisionero 1';
+p1verdadero.setAttribute('type','radio');
+p1verdadero.setAttribute('id','op1verdadero');
+p1verdadero.setAttribute('name','respuestasp1');
+p1verdadero.setAttribute('value','true');
+label1.textContent = 'confesar';
+p1falso.setAttribute('type', 'radio');
+p1falso.setAttribute('id','op1falso');
+p1falso.setAttribute('name','respuestasp1');
+p1falso.setAttribute('value','false');
+label2.textContent = 'quedarse callado';
+
+enunciadop2.textContent = 'prisionero 2';
+p2verdadero.setAttribute('type','radio');
+p2verdadero.setAttribute('id','op2verdadero');
+p2verdadero.setAttribute('name','respuestasp2');
+p2verdadero.setAttribute('value','true');
+label3.textContent = 'confesar';
+p2falso.setAttribute('type', 'radio');
+p2falso.setAttribute('id','op2falso');
+p2falso.setAttribute('name','respuestasp2');
+p2falso.setAttribute('value','false');
+label4.textContent = 'quedarse callado';
+
+condena.textContent = 'Condena';
+condena.style.backgroundColor = 'gray';
+condena.style.padding = '10px 10px';
+condena.style.display = 'inline-block';
+condena.style.borderRadius = '5px';
+condena.style.margin = '10px';
+
+//funcion condena
+condena.addEventListener('click', function () {
+  const rcondena = document.createElement('h1');
+  divp.appendChild(rcondena);
+  p1marcado = document.querySelector('input[name="respuestasp1"]:checked');
+  p2marcado = document.querySelector('input[name="respuestasp2"]:checked');
+
+ if (!p1marcado || !p2marcado) {
+    rcondena.textContent = 'selecciona las elecciones de cada prisionero para emitir una condena';
+    return;
+  } 
+valorp1 = p1marcado.value;
+valorp2 = p2marcado.value;
+
+   if (valorp1==='false' && valorp2==='true') {
+    rcondena.textContent = 'El prisionero 1 tendra una condena de 10 años y el prisionero 2 saldra libre';
+  }
+  
+   if (valorp1==='true' && valorp2==='false') {
+    rcondena.textContent = 'El prisionero 1 saldra libre y el prisionero 2 tendra una condena de 10 años';
+  }
+  
+  else if (valorp1==='true' && valorp2==='true') {
+    rcondena.textContent='Los acusados tendran 2 años de prisión';
+  }
+  else if (valorp1==='false' && valorp2==='false') {
+    rcondena.textContent='Ya que ninguno confeso tendran una condena de 6 meses';
+  }
+})
+})
+    </script> 
+</body>
+</html>
